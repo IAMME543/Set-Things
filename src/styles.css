@@ -5,9 +5,7 @@
   font-weight: 400;
 
   color: #0f0f0f;
-  background-color: color-mix(in srgb, seashell 50%, white);
-
-
+  background-color: var(--canvas-colour);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,11 +13,13 @@
   -webkit-text-size-adjust: 100%;
 
   /*variables*/
+  --canvas-colour: color-mix(in srgb, seashell 50%, white);
   --accent-colour: salmon;
   --floating-colour: white;
   --text-colour: #0f0f0f;
   --text-hover-colour: black;
-  --border-radius: .5em;
+  --border-radius: 1em;
+
 }
 
 html,
@@ -83,7 +83,30 @@ button:hover {
   cursor: pointer;
   background-color: var(--accent-colour);
   box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.10);
-  color: --text-hover-colour;
+  color: var(--text-hover-colour);
+}
+
+/*search input*/
+.search-input {
+  outline: none;
+  background-color: var(--canvas-colour);
+  border-style: none;
+  color: #0f0f0f;
+  padding: .5em;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.5em .5em rgba(0, 0, 0, 0.10);
+  padding-left: 3em;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper span {
+  position: absolute;
+  left: 1em;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* tauri defaults*/
@@ -101,19 +124,18 @@ h1 {
   text-align: center;
 }
 
-input,
-button {
-  outline: none;
-}
+
 
 
 @media (prefers-color-scheme: dark) {
   :root {
     color: oldlace;
-    background-color: #1F1E1C;
+    background-color: var(--canvas-colour);
 
+    --canvas-colour: #1F1E1C;
     --floating-colour: #362f2f;
     --text-colour: oldlace;
-    --text-hover-colour: white;
+    --text-hover-colour: black;
+    --grey-colour: #282828;
   }
 }
