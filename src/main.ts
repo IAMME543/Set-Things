@@ -1,4 +1,14 @@
 import { invoke } from "@tauri-apps/api/core";
+import { createIcons, Menu, ArrowRight, Search } from 'lucide';
+
+createIcons({
+  icons: {
+    Menu,
+    ArrowRight,
+    Search
+  }
+});
+
 
 let primaryContainer: HTMLElement | null;
 

@@ -104,7 +104,9 @@ button:hover {
   display: flex;
 }
 
-.search-wrapper span {
+.search-wrapper svg {
+  width: 1em;
+  height: 1em;
   position: absolute;
   left: 1em;
   top: 50%;
