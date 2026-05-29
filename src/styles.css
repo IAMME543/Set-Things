@@ -96,10 +96,12 @@ button:hover {
   border-radius: var(--border-radius);
   box-shadow: 0 0.5em .5em rgba(0, 0, 0, 0.10);
   padding-left: 3em;
+  flex: 1;
 }
 
 .search-wrapper {
   position: relative;
+  display: flex;
 }
 
 .search-wrapper span {
