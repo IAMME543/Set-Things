@@ -13,7 +13,7 @@
   <main class="container">
 
     <div class="split-layout">
-      <div class="secondary-split vertical-layout">
+      <div class="secondary-split vertical-layout hierarchy">
         <div class="search-wrapper">
           <span data-lucide="search">🔎</span>
           <input class="search-input" type="text" placeholder="Search...">
@@ -27,7 +27,8 @@
         <button data-view="permissions"><span data-lucide="lock"></span> Permisions</button>
         <button data-view="accessibility"><span data-lucide="PersonStanding"></span> Accessibility</button>
       </div>
-      <div id="view" class="primary-split">
+      <div class="primary-split">
+        <div id="view" class="main-layout"></div>
       </div>
     </div>
 
@@ -35,6 +36,10 @@
   <!-- templates below -->
   <template id="general-view">
     <h1>General</h1>
+    <div class="vertical-layout hierarchy">
+      <button>Setting</button>
+      <button>yet another thing to change</button>
+    </div>
   </template>
   <template id="network-view">
     <h1>Network</h1>

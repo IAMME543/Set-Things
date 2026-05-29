@@ -46,13 +46,12 @@ body {
 
 .split-layout .primary-split {
   flex: 6;
+  display: flex;
+  justify-content: center;
 }
 
 .split-layout .secondary-split {
   flex: 1;
-  background-color: var(--floating-colour);
-  box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.10);
-  border-radius: var(--border-radius);
 }
 
 /*vertical-layout*/
@@ -121,6 +120,18 @@ button:hover {
 /*headings*/
 h1 {
   text-align: center;
+}
+
+/*main-layout*/
+.main-layout {
+  width: 60em;
+}
+
+/*hierarchy*/
+.hierarchy {
+  background-color: var(--floating-colour);
+  box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.10);
+  border-radius: var(--border-radius);
 }
 
 
