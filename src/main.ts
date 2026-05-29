@@ -31,6 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
       setView(name as ViewName);
     });
   })
+  setView("general" as ViewName)
 });
 
 function setView(name: ViewName) {
