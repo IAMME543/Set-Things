@@ -14,20 +14,43 @@
 
     <div class="split-layout">
       <div class="secondary-split vertical-layout">
-        <button>General</button>
-        <button>Network</button>
-        <button>Bluetooth</button>
-        <button>Appearance</button>
-        <button>Battery</button>
-        <button>Permisions</button>
-        <button>Accesibility</button>
+        <button data-view="general">General</button>
+        <button data-view="network">Network</button>
+        <button data-view="bluetooth">Bluetooth</button>
+        <button data-view="appearance">Appearance</button>
+        <button data-view="battery">Battery</button>
+        <button data-view="permissions">Permisions</button>
+        <button data-view="accessibility">Accessibility</button>
       </div>
-      <div class="primary-split">
+      <div id="view" class="primary-split">
         <h1>Primary</h1>
       </div>
     </div>
 
   </main>
+  <!-- templates below -->
+  <template id="general-view">
+    <h1>General</h1>
+  </template>
+  <template id="network-view">
+    <h1>Network</h1>
+  </template>
+  <template id="bluetooth-view">
+    <h1>Bluetooth</h1>
+  </template>
+  <template id="appearance-view">
+    <h1>Appearance</h1>
+  </template>
+  <template id="battery-view">
+    <h1>Battery</h1>
+  </template>
+  <template id="permissions-view">
+    <h1>Permissions</h1>
+  </template>
+  <template id="accessibility-view">
+    <h1>Accessibility</h1>
+  </template>
+
 </body>
 
 </html>
