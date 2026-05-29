@@ -1,11 +1,17 @@
 import { invoke } from "@tauri-apps/api/core";
-import { createIcons, Menu, ArrowRight, Search } from 'lucide';
+import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding } from 'lucide';
 
 createIcons({
   icons: {
     Menu,
-    ArrowRight,
-    Search
+    Settings,
+    Search,
+    Globe,
+    Bluetooth,
+    Paintbrush,
+    Battery,
+    Lock,
+    PersonStanding
   }
 });
 
