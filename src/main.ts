@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
-import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding } from 'lucide';
+import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, Minus, X } from 'lucide';
+import { setPowerProfile } from "./api/power_profiles"
 
 createIcons({
   icons: {
@@ -11,7 +12,9 @@ createIcons({
     Paintbrush,
     Battery,
     Lock,
-    PersonStanding
+    PersonStanding,
+    Minus,
+    X
   }
 });
 
@@ -57,4 +60,28 @@ function setView(name: ViewName) {
 
   primaryContainer.innerHTML = ""
   primaryContainer.appendChild(view.content.cloneNode(true));
+
+  switch (name) {
+    case "general" as ViewName:
+      break;
+    case "network" as ViewName:
+      break;
+    case "bluetooth" as ViewName:
+      break;
+    case "appearance" as ViewName:
+      break;
+    case "battery" as ViewName: {
+      document.querySelector("#powerprofile")?.addEventListener("click", () => {
+        setPowerProfile("balanced");
+        console.log("clicked power profile")
+      });
+    }
+      break;
+    case "permissions" as ViewName:
+      break;
+    case "accessibility" as ViewName:
+      break;
+  }
 }
+
+

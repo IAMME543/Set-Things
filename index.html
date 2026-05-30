@@ -27,7 +27,11 @@
         <button data-view="permissions"><span data-lucide="lock"></span> Permisions</button>
         <button data-view="accessibility"><span data-lucide="PersonStanding"></span> Accessibility</button>
       </div>
-      <div class="primary-split">
+      <div class="primary-split vertical-layout">
+        <div class="title-bar">
+          <button id="min"><span data-lucide="minus">-</span></button>
+          <button id="close"><span data-lucide="x">X</span></button>
+        </div>
         <div id="view" class="main-layout"></div>
       </div>
     </div>
@@ -52,6 +56,9 @@
   </template>
   <template id="battery-view">
     <h1>Battery</h1>
+    <div class="vertical-layout hierarchy">
+      <button id="powerprofile">power profile</button>
+    </div>
   </template>
   <template id="permissions-view">
     <h1>Permissions</h1>
