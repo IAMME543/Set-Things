@@ -1,23 +1,10 @@
 import { invoke } from "@tauri-apps/api/core";
-import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, Minus, X } from 'lucide';
+import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, X, ChevronDown } from 'lucide';
 import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
 
-createIcons({
-  icons: {
-    Menu,
-    Settings,
-    Search,
-    Globe,
-    Bluetooth,
-    Paintbrush,
-    Battery,
-    Lock,
-    PersonStanding,
-    X
-  }
-});
 
+loadLucide()
 
 let primaryContainer: HTMLElement | null;
 
@@ -60,6 +47,7 @@ function setView(name: ViewName) {
 
   primaryContainer.innerHTML = ""
   primaryContainer.appendChild(view.content.cloneNode(true));
+  loadLucide();
 
   switch (name) {
     case "general" as ViewName:
@@ -71,10 +59,27 @@ function setView(name: ViewName) {
     case "appearance" as ViewName:
       break;
     case "battery" as ViewName: {
-      document.querySelector("#powerprofile")?.addEventListener("click", () => {
-        setPowerProfile("balanced");
-        console.log("clicked power profile")
-      });
+      document.querySelectorAll(".dropdown-button")?.forEach(button => {
+        button.addEventListener("click", () => {
+          button.nextElementSibling?.classList.toggle("show");
+        })
+      })
+      document.querySelectorAll(".dropdown-menu")?.forEach(menu => {
+        menu.childNodes.forEach(child => {
+          child.addEventListener("click", () => {
+            let initiator = menu.previousElementSibling as HTMLElement
+            let label = initiator.querySelector(".label");
+            if (!label) return
+            if (!initiator) return
+            const profile = (child as HTMLElement).dataset.value ?? ""
+            initiator?.setAttribute("data-value", profile);
+            label.textContent = profile;
+            setPowerProfile(profile);
+            initiator.click()
+
+          })
+        })
+      })
     }
       break;
     case "permissions" as ViewName:
@@ -85,4 +90,21 @@ function setView(name: ViewName) {
   document.querySelector("#close")?.addEventListener("click", () => { closeApp() });
 }
 
-
+function loadLucide() {
+  //could be optimised in future
+  createIcons({
+    icons: {
+      Menu,
+      Settings,
+      Search,
+      Globe,
+      Bluetooth,
+      Paintbrush,
+      Battery,
+      Lock,
+      PersonStanding,
+      X,
+      ChevronDown
+    }
+  });
+}

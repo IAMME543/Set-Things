@@ -29,7 +29,7 @@
       </div>
       <div class="primary-split vertical-layout">
         <div class="title-bar">
-          <button id="close"><span data-lucide="x">X</span></button>
+          <button id="close" class="button-light"><span data-lucide="x">X</span></button>
         </div>
         <div id="view" class="main-layout"></div>
       </div>
@@ -57,6 +57,15 @@
     <h1>Battery</h1>
     <div class="vertical-layout hierarchy">
       <button id="powerprofile">power profile</button>
+      <div class="dropdown">
+        <button class="dropdown-button" data-value="Balanced"> <span data-lucide="ChevronDown">V</span><span
+            class="label">Balanced</span></button>
+        <div class="dropdown-menu">
+          <button class="button-light" data-value="Power Saver">Power Saver</button>
+          <button class="button-light" data-value="Balanced">Balanced</button>
+          <button class="button-light" data-value="Performance">Performance</button>
+        </div>
+      </div>
     </div>
   </template>
   <template id="permissions-view">

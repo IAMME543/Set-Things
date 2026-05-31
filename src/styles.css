@@ -127,9 +127,10 @@ h1 {
 /*main-layout*/
 .main-layout {
   max-width: 60rem;
-  width: 100%;
   margin: 0 auto;
+  width: 100%;
   padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 /*hierarchy*/
@@ -162,11 +163,45 @@ h1 {
   padding: 0;
 }
 
-.title-bar button:hover {
-  background-color: color-mix(in srgb, var(--accent-colour) 10%, transparent);
+/*button-light*/
+.button-light:hover {
+  background-color: color-mix(in srgb, var(--accent-colour) 20%, transparent);
   color: var(--text-colour)
 }
 
+/*dropdown menu*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--floating-colour);
+  border: none;
+  min-width: 150px;
+  padding: .5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.10);
+}
+
+.dropdown-menu.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-button svg {
+  display: block;
+}
 
 /*dark theme*/
 @media (prefers-color-scheme: dark) {
