@@ -19,8 +19,8 @@
   --floating-colour: white;
   --text-colour: #0f0f0f;
   --text-hover-colour: black;
-  --border-radius: 1em;
-  --title-bar-height: 5em;
+  --border-radius: 2rem;
+  --title-bar-height: 2rem;
 }
 
 
@@ -148,6 +148,23 @@ h1 {
   left: 0;
   right: 0;
   height: var(--title-bar-height);
+  padding: 5px;
+}
+
+.title-bar button {
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.title-bar button:hover {
+  background-color: color-mix(in srgb, var(--accent-colour) 10%, transparent);
+  color: var(--text-colour)
 }
 
 

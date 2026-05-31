@@ -1,6 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, Minus, X } from 'lucide';
 import { setPowerProfile } from "./api/power_profiles"
+import { closeApp } from "./api/app_controls"
 
 createIcons({
   icons: {
@@ -13,7 +14,6 @@ createIcons({
     Battery,
     Lock,
     PersonStanding,
-    Minus,
     X
   }
 });
@@ -82,6 +82,7 @@ function setView(name: ViewName) {
     case "accessibility" as ViewName:
       break;
   }
+  document.querySelector("#close")?.addEventListener("click", () => { closeApp() });
 }
 
 
