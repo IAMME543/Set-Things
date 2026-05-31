@@ -5,7 +5,7 @@
 ## Split Layout
 a split with a primary and secondary container. Size of each cannot be changed by user at runtime(yet), but you can change that by changing the flex value in the primary split
 
-`.split-layout {
+```.split-layout {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -21,43 +21,43 @@ a split with a primary and secondary container. Size of each cannot be changed b
 
 .split-layout .secondary-split {
   flex: 1;
-}`
+}```
 
 ## Vertical Layout
 A flex with direction column
 
-`.vertical-layout {
+```.vertical-layout {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   gap: .5rem
-}`
+}```
 
 ## Main Layout
 a div that will grow to a width to fill as much space up to the max or the margin. 
 
-`.main-layout {
+```.main-layout {
   max-width: 60rem;
   margin: 0 auto;
   width: 100%;
   padding: 0 2rem;
   box-sizing: border-box;
-}`
+}```
 
 ## Hierarchy
 a div to implement visual hierarchy in UI.
 
-`.hierarchy {
+```.hierarchy {
   background-color: var(--floating-colour);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.10);
   border-radius: var(--border-radius);
-}`
+}```
 
 ## Title Bar
 NOT FEATURE COMPLETE: Needs the ability for more buttons and drop down menus in the left as well as an icon and window name section.
 WIP titlebar with close button in top right.
 
-`.title-bar {
+```.title-bar {
   display: flex;
   justify-content: flex-end;
   position: fixed;
@@ -77,7 +77,7 @@ WIP titlebar with close button in top right.
   align-items: center;
   justify-content: center;
   padding: 0;
-}`
+}```
 
 
 # Interactions
@@ -85,7 +85,7 @@ WIP titlebar with close button in top right.
 ## Button 
 default styling for buttons
 
-`button {
+```button {
   border-radius: var(--border-radius);
   border: none;
   padding: 0.6rem 1.2rem;
@@ -103,20 +103,20 @@ button:hover {
   background-color: var(--accent-colour);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.10);
   color: var(--text-hover-colour);
-}`
+}```
 
 ## Button-Light
 Hover settings for default button styling that makes the accent colour lighter.
 
-`.button-light:hover {
+```.button-light:hover {
   background-color: color-mix(in srgb, var(--accent-colour) 20%, transparent);
   color: var(--text-colour)
-}`
+}```
 
 ## Input
 Default styling for a text input.
 
-`input {
+```input {
   outline: none;
   background-color: var(--canvas-colour);
   border-style: none;
@@ -126,13 +126,13 @@ Default styling for a text input.
   box-shadow: 0 0.5rem .5rem rgba(0, 0, 0, 0.10);
   padding-block: .7rem;
   flex: 1;
-}`
+}```
 
 
 ## Search Input
 Styling to add an icon to the left of an input
 
-`.search-input {
+```.search-input {
   outline: none;
   background-color: var(--canvas-colour);
   border-style: none;
@@ -150,19 +150,18 @@ Styling to add an icon to the left of an input
   display: flex;
   margin-bottom: 1rem;
 }
-
 .search-wrapper svg {
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-}`
+}```
 
 ## Dropdown
 WIP dropdown menu, uses data-value in html which you can access from typescript.
 
 **HTML**
-    <div class="dropdown">
+    ```<div class="dropdown">
     <button class="dropdown-button" data-value="Default"> <span data-lucide="ChevronDown">V</span><span
         class="label">Default</span></button>
     <div class="dropdown-menu">
@@ -170,9 +169,9 @@ WIP dropdown menu, uses data-value in html which you can access from typescript.
         <button class="button-light" data-value="123ABC">123ABC</button>
         <button class="button-light" data-value="XYZ">XYZ</button>
     </div>
-    </div>
+    </div>```
 **Typescript**
-document.querySelectorAll(".dropdown-button")?.forEach(button => {
+```document.querySelectorAll(".dropdown-button")?.forEach(button => {
         button.addEventListener("click", () => {
           button.nextElementSibling?.classList.toggle("show");
         })
@@ -191,10 +190,10 @@ document.querySelectorAll(".dropdown-button")?.forEach(button => {
             initiator.click()
           })
         })
-      })
+      })```
 
 **CSS**
-.dropdown-menu {
+```.dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
@@ -220,14 +219,14 @@ document.querySelectorAll(".dropdown-button")?.forEach(button => {
 
 .dropdown-button svg {
   display: block;
-}
+}```
 
 # Informative
 
 ## Lucide Icons
 Set a fixed size for lucide icons.
 
-.lucide {
+```.lucide {
   width: 1.2rem;
   height: 1.2rem;
-}
+}```
