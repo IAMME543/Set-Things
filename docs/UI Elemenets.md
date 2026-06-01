@@ -221,7 +221,7 @@ document.querySelectorAll(".dropdown-button")?.forEach(button => {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--floating-colour);
+  background: var(--canvas-colour);
   border: none;
   min-width: 150px;
   padding: .5rem;
