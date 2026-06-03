@@ -26,6 +26,10 @@ type ViewName =
   | "permissions"
   | "accessibility";
 
+window.addEventListener('click', () => {
+  ClosePopups()
+})
+
 window.addEventListener("DOMContentLoaded", () => {
   primaryContainer = document.getElementById("view") as HTMLElement;
   if (!primaryContainer) return
@@ -60,8 +64,9 @@ function setView(name: ViewName) {
       break;
     case "battery" as ViewName: {
       document.querySelectorAll(".dropdown-button")?.forEach(button => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
           button.nextElementSibling?.classList.toggle("show");
+          e.stopPropagation()
         })
       })
       document.querySelectorAll(".dropdown-menu")?.forEach(menu => {
@@ -107,4 +112,10 @@ function loadLucide() {
       ChevronDown
     }
   });
+}
+function ClosePopups() {
+  document.querySelectorAll('.dropdown-menu').forEach(menu => {
+    menu.classList.remove("show")
+  })
+
 }
