@@ -2,6 +2,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, X, ChevronDown } from 'lucide';
 import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
+import { setWifi, listWifi, connectWifi } from "./api/network";
 
 
 loadLucide()
@@ -57,6 +58,14 @@ function setView(name: ViewName) {
     case "general" as ViewName:
       break;
     case "network" as ViewName:
+      document.getElementById("enable-wifi")?.addEventListener("change", (e) => {
+        const el = e.currentTarget as HTMLInputElement
+        if (!el) return
+        setWifi(el.checked)
+      })
+      document.getElementById("list-wifi")?.addEventListener("click", async () => {
+        console.log(await listWifi())
+      })
       break;
     case "bluetooth" as ViewName:
       break;

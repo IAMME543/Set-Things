@@ -46,6 +46,20 @@
   </template>
   <template id="network-view">
     <h1>Network</h1>
+    <div class="vetical-layout hierarchy">
+      <div class="horizontal-setting">
+        <p>Enable WIFI</p>
+        <label class="switch">
+          <input type="checkbox" id="enable-wifi">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+    </div>
+    <div class="vertical-layout hierarchy">
+      <!-- some way to create a list of buttons programatically.... see dropdown code -->
+      <button id="list-wifi">List Wifi Networks</button>
+    </div>
   </template>
   <template id="bluetooth-view">
     <h1>Bluetooth</h1>
