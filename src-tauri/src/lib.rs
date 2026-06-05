@@ -17,7 +17,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             power_profiles::set_profile,
             network::connect_wifi,
-            network::list_wifi
+            network::list_wifi,
+            network::toggle_wifi
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

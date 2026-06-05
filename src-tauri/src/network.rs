@@ -41,3 +41,12 @@ pub async fn connect_wifi(
 
     Ok(())
 }
+
+#[tauri::command]
+pub async fn toggle_wifi(nm: State<'_, SharedNM>, toggle: bool) -> Result<(), String> {
+    nm.set_wireless_enabled(toggle)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    Ok(())
+}
