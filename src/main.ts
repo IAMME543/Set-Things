@@ -3,6 +3,7 @@ import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Batt
 import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
 import { setWifi, listWifi, connectWifi } from "./api/network";
+import { dpi } from "@tauri-apps/api";
 
 
 loadLucide()
@@ -45,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
   setView("general" as ViewName)
 });
 
-function setView(name: ViewName) {
+async function setView(name: ViewName) {
   if (!primaryContainer) return
   const view = views[name];
   if (!view) return;
@@ -63,9 +64,17 @@ function setView(name: ViewName) {
         if (!el) return
         setWifi(el.checked)
       })
-      document.getElementById("list-wifi")?.addEventListener("click", async () => {
-        console.log(await listWifi())
-      })
+
+      const wifilist = document.getElementById("wifi-list");
+      if (!wifilist) return
+      const wifidata = await listWifi();
+      wifidata.forEach(network => {
+        console.log(network)
+        let display = document.createElement("button")
+        display.classList.add("button-light")
+        display.innerText = network.ssid
+        wifilist?.appendChild(display)
+      });
       break;
     case "bluetooth" as ViewName:
       break;
