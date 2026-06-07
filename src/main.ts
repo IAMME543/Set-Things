@@ -1,5 +1,5 @@
 import { invoke } from "@tauri-apps/api/core";
-import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, X, ChevronDown } from 'lucide';
+import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, X, ChevronDown, Wifi, WifiLow, WifiHigh } from 'lucide';
 import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
 import { setWifi, listWifi, connectWifi } from "./api/network";
@@ -53,12 +53,14 @@ async function setView(name: ViewName) {
 
   primaryContainer.innerHTML = ""
   primaryContainer.appendChild(view.content.cloneNode(true));
-  loadLucide();
+
 
   switch (name) {
     case "general" as ViewName:
       break;
     case "network" as ViewName:
+      const wifistrengthicons = ["wifi-low", "wifi-high", "wifi"]
+
       document.getElementById("enable-wifi")?.addEventListener("change", (e) => {
         const el = e.currentTarget as HTMLInputElement
         if (!el) return
@@ -68,11 +70,20 @@ async function setView(name: ViewName) {
       const wifilist = document.getElementById("wifi-list");
       if (!wifilist) return
       const wifidata = await listWifi();
+      wifidata.sort((a, b) => b.strength - a.strength);
       wifidata.forEach(network => {
+        if (network.ssid == "<Hidden Network>") return
         console.log(network)
+
         let display = document.createElement("button")
         display.classList.add("button-light")
+        display.classList.add("horizontal-setting")
         display.innerText = network.ssid
+        let strength = document.createElement("span")
+        strength.dataset.lucide = wifistrengthicons[Math.ceil(Math.min(
+          2,
+          Math.floor(network.strength / 34)))]
+        display.appendChild(strength)
         wifilist?.appendChild(display)
       });
       break;
@@ -110,6 +121,7 @@ async function setView(name: ViewName) {
     case "accessibility" as ViewName:
       break;
   }
+  loadLucide();
   document.querySelector("#close")?.addEventListener("click", () => { closeApp() });
 }
 
@@ -127,7 +139,11 @@ function loadLucide() {
       Lock,
       PersonStanding,
       X,
-      ChevronDown
+      ChevronDown,
+      Wifi,
+      WifiLow,
+      WifiHigh
+
     }
   });
 }
