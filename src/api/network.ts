@@ -11,6 +11,9 @@ export async function connectWifi(ssid: String, password: String) {
 export async function setWifi(toggle: boolean) {
     return invoke("toggle_wifi", { toggle })
 }
+export async function getWifi(): Promise<boolean> {
+    return invoke("get_wifi")
+}
 
 
 export async function listWifi(): Promise<WifiNetwork[]> {

@@ -50,3 +50,8 @@ pub async fn toggle_wifi(nm: State<'_, SharedNM>, toggle: bool) -> Result<(), St
 
     Ok(())
 }
+#[tauri::command]
+pub async fn get_wifi(nm: State<'_, SharedNM>) -> Result<bool, String> {
+    let state = nm.wifi_state().await.map_err(|e| e.to_string())?;
+    Ok(state.enabled)
+}

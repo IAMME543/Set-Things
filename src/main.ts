@@ -2,7 +2,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, X, ChevronDown, Wifi, WifiLow, WifiHigh } from 'lucide';
 import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
-import { setWifi, listWifi, connectWifi } from "./api/network";
+import { setWifiList, setToggleDefaults, setupNetworkListeners } from "./ui/ui_network";
 import { dpi } from "@tauri-apps/api";
 
 
@@ -59,33 +59,9 @@ async function setView(name: ViewName) {
     case "general" as ViewName:
       break;
     case "network" as ViewName:
-      const wifistrengthicons = ["wifi-low", "wifi-high", "wifi"]
-
-      document.getElementById("enable-wifi")?.addEventListener("change", (e) => {
-        const el = e.currentTarget as HTMLInputElement
-        if (!el) return
-        setWifi(el.checked)
-      })
-
-      const wifilist = document.getElementById("wifi-list");
-      if (!wifilist) return
-      const wifidata = await listWifi();
-      wifidata.sort((a, b) => b.strength - a.strength);
-      wifidata.forEach(network => {
-        if (network.ssid == "<Hidden Network>") return
-        console.log(network)
-
-        let display = document.createElement("button")
-        display.classList.add("button-light")
-        display.classList.add("horizontal-setting")
-        display.innerText = network.ssid
-        let strength = document.createElement("span")
-        strength.dataset.lucide = wifistrengthicons[Math.ceil(Math.min(
-          2,
-          Math.floor(network.strength / 34)))]
-        display.appendChild(strength)
-        wifilist?.appendChild(display)
-      });
+      setupNetworkListeners()
+      setToggleDefaults()
+      setWifiList()
       break;
     case "bluetooth" as ViewName:
       break;

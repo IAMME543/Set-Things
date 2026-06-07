@@ -18,7 +18,8 @@ pub fn run() {
             power_profiles::set_profile,
             network::connect_wifi,
             network::list_wifi,
-            network::toggle_wifi
+            network::toggle_wifi,
+            network::get_wifi
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
