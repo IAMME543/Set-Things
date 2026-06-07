@@ -20,7 +20,7 @@
   --text-colour: #0f0f0f;
   --text-hover-colour: black;
   --border-radius: 2rem;
-  --title-bar-height: 2rem;
+  --title-bar-height: 1rem;
 
 }
 
@@ -131,7 +131,7 @@ h1 {
   max-width: 60rem;
   margin: 0 auto;
   width: 100%;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   box-sizing: border-box;
 }
 
