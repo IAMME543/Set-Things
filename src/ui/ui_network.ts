@@ -30,6 +30,7 @@ export async function setWifiList() {
             Math.floor(network.strength / 34)))]
         display.appendChild(strength)
         wifilist?.appendChild(display)
+        console.log(strength)
     });
 }
 

@@ -60,8 +60,9 @@ async function setView(name: ViewName) {
       break;
     case "network" as ViewName:
       setupNetworkListeners()
-      setToggleDefaults()
-      setWifiList()
+      await setToggleDefaults()
+      await setWifiList()
+
       break;
     case "bluetooth" as ViewName:
       break;
@@ -97,31 +98,34 @@ async function setView(name: ViewName) {
     case "accessibility" as ViewName:
       break;
   }
-  loadLucide();
+  loadLucide()
+
   document.querySelector("#close")?.addEventListener("click", () => { closeApp() });
 }
 
 function loadLucide() {
   //could be optimised in future
-  createIcons({
-    icons: {
-      Menu,
-      Settings,
-      Search,
-      Globe,
-      Bluetooth,
-      Paintbrush,
-      Battery,
-      Lock,
-      PersonStanding,
-      X,
-      ChevronDown,
-      Wifi,
-      WifiLow,
-      WifiHigh
+  requestAnimationFrame(() => {
+    createIcons({
+      icons: {
+        Menu,
+        Settings,
+        Search,
+        Globe,
+        Bluetooth,
+        Paintbrush,
+        Battery,
+        Lock,
+        PersonStanding,
+        X,
+        ChevronDown,
+        Wifi,
+        WifiLow,
+        WifiHigh
 
-    }
-  });
+      }
+    });
+  })
 }
 function ClosePopups() {
   document.querySelectorAll('.dropdown-menu').forEach(menu => {

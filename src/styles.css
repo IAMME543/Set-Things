@@ -17,6 +17,7 @@
   --canvas-colour: color-mix(in srgb, seashell 50%, white);
   --accent-colour: salmon;
   --floating-colour: white;
+  --side-colour: hsl(6, 20%, 95%);
   --text-colour: #0f0f0f;
   --text-hover-colour: black;
   --border-radius: 2rem;
@@ -51,6 +52,7 @@ body {
 .split-layout .primary-split {
   flex: 6;
   padding: 0 !important;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.10);
 }
 
 .split-layout .secondary-split {
@@ -278,8 +280,17 @@ input:checked+.slider:before {
 }
 
 .side-pane {
-  background-color: var(--floating-colour);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.10);
+  background-color: var(--side-colour);
+
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0 1rem;
+  margin-bottom: 0;
 }
 
 /*dark theme*/
@@ -293,5 +304,6 @@ input:checked+.slider:before {
     --text-colour: oldlace;
     --text-hover-colour: black;
     --grey-colour: #282828;
+    --side-colour: var(--floating-colour)
   }
 }
