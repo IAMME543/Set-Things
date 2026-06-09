@@ -20,7 +20,8 @@
   --side-colour: hsl(6, 20%, 95%);
   --text-colour: #0f0f0f;
   --text-hover-colour: black;
-  --border-radius: 2rem;
+  --deep-border-radius: 2rem;
+  --shallow-border-radius: 1rem;
   --title-bar-height: 1rem;
 
 }
@@ -70,7 +71,7 @@ body {
 
 /*button*/
 button {
-  border-radius: var(--border-radius);
+  border-radius: var(--deep-border-radius);
   border: none;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
@@ -100,7 +101,7 @@ button:hover {
   border-style: none;
   color: var(--text-colour);
   padding: .5rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--deep-border-radius);
   box-shadow: 0 0.5rem .5rem rgba(0, 0, 0, 0.10);
   padding-left: 3rem;
   padding-block: .7rem;
@@ -146,7 +147,7 @@ h1 {
 .hierarchy {
   background-color: var(--floating-colour);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.10);
-  border-radius: var(--border-radius);
+  border-radius: var(--shallow-border-radius);
   margin: 1rem;
 }
 
