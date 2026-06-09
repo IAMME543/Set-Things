@@ -89,6 +89,10 @@ button:hover {
   color: var(--text-hover-colour);
 }
 
+.active {
+  background-color: color-mix(in srgb, var(--accent-colour) 20%, transparent);
+}
+
 /*search input*/
 .search-input {
   outline: none;

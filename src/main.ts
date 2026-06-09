@@ -9,6 +9,7 @@ import { dpi } from "@tauri-apps/api";
 loadLucide()
 
 let primaryContainer: HTMLElement | null;
+let activeButton: HTMLButtonElement | null;
 
 const views: Record<ViewName, HTMLTemplateElement> = {
   general: document.getElementById("general-view") as HTMLTemplateElement,
@@ -41,9 +42,17 @@ window.addEventListener("DOMContentLoaded", () => {
     el.addEventListener("click", () => {
       const name = el.dataset.view
       setView(name as ViewName);
+      if (activeButton) {
+        activeButton?.classList.remove("active")
+      }
+      el.classList.add("active")
+      activeButton = el;
     });
+    if (el.dataset.view == "general") {
+      el.click()
+    }
   })
-  setView("general" as ViewName)
+
 });
 
 async function setView(name: ViewName) {
