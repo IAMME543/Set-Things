@@ -1,9 +1,7 @@
-import { invoke } from "@tauri-apps/api/core";
 import { createIcons, Menu, Settings, Search, Globe, Bluetooth, Paintbrush, Battery, Lock, PersonStanding, X, ChevronDown, Wifi, WifiLow, WifiHigh } from 'lucide';
-import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
 import { setWifiList, setToggleDefaults, setupNetworkListeners } from "./ui/ui_network";
-import { dpi } from "@tauri-apps/api";
+import { setupPowerProfilesDropdown } from "./ui/ui_battery"
 import { state } from "./state";
 
 
@@ -23,7 +21,7 @@ const views: Record<ViewName, HTMLTemplateElement> = {
   accessibility: document.getElementById("accessibility-view") as HTMLTemplateElement,
 };
 
-window.addEventListener('click', () => {
+window.addEventListener('click', () => { // close popups when click off
   ClosePopups()
 })
 
@@ -70,35 +68,13 @@ async function setView(name: ViewName) {
       setupNetworkListeners()
       await setToggleDefaults()
       await setWifiList()
-
       break;
     case "bluetooth" as ViewName:
       break;
     case "appearance" as ViewName:
       break;
     case "battery" as ViewName: {
-      document.querySelectorAll(".dropdown-button")?.forEach(button => {
-        button.addEventListener("click", (e) => {
-          button.nextElementSibling?.classList.toggle("show");
-          e.stopPropagation()
-        })
-      })
-      document.querySelectorAll(".dropdown-menu")?.forEach(menu => {
-        menu.childNodes.forEach(child => {
-          child.addEventListener("click", () => {
-            let initiator = menu.previousElementSibling as HTMLElement
-            let label = initiator.querySelector(".label");
-            if (!label) return
-            if (!initiator) return
-            const profile = (child as HTMLElement).dataset.value ?? ""
-            initiator?.setAttribute("data-value", profile);
-            label.textContent = profile;
-            setPowerProfile(profile);
-            initiator.click()
-
-          })
-        })
-      })
+      setupPowerProfilesDropdown()
     }
       break;
     case "permissions" as ViewName:
