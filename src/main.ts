@@ -4,6 +4,8 @@ import { setPowerProfile } from "./api/power_profiles"
 import { closeApp } from "./api/app_controls"
 import { setWifiList, setToggleDefaults, setupNetworkListeners } from "./ui/ui_network";
 import { dpi } from "@tauri-apps/api";
+import { state } from "./state";
+
 
 
 loadLucide()
@@ -20,18 +22,11 @@ const views: Record<ViewName, HTMLTemplateElement> = {
   permissions: document.getElementById("permissions-view") as HTMLTemplateElement,
   accessibility: document.getElementById("accessibility-view") as HTMLTemplateElement,
 };
-type ViewName =
-  | "general"
-  | "network"
-  | "bluetooth"
-  | "appearance"
-  | "battery"
-  | "permissions"
-  | "accessibility";
 
 window.addEventListener('click', () => {
   ClosePopups()
 })
+
 
 window.addEventListener("DOMContentLoaded", () => {
   primaryContainer = document.getElementById("view") as HTMLElement;
@@ -41,6 +36,9 @@ window.addEventListener("DOMContentLoaded", () => {
     let el = btn as HTMLButtonElement
     el.addEventListener("click", () => {
       const name = el.dataset.view
+      console.log(el.dataset.view)
+      if (name == state.currentView) return
+
       setView(name as ViewName);
       if (activeButton) {
         activeButton?.classList.remove("active")
@@ -48,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
       el.classList.add("active")
       activeButton = el;
     });
-    if (el.dataset.view == "general") {
+    if (el.dataset.view == "general") { //"clicks" the general button on startup
       el.click()
     }
   })
@@ -56,6 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 async function setView(name: ViewName) {
+  state.currentView = name;
   if (!primaryContainer) return
   const view = views[name];
   if (!view) return;
