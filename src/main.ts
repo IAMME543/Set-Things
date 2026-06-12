@@ -3,6 +3,7 @@ import { closeApp } from "./api/app_controls"
 import { setWifiList, setToggleDefaults, setupNetworkListeners } from "./ui/ui_network";
 import { setupPowerProfilesDropdown } from "./ui/ui_battery"
 import { state } from "./state";
+import { setupThemeSwitcher } from './ui/ui_appearance';
 
 
 
@@ -72,6 +73,7 @@ async function setView(name: ViewName) {
     case "bluetooth" as ViewName:
       break;
     case "appearance" as ViewName:
+      setupThemeSwitcher()
       break;
     case "battery" as ViewName: {
       setupPowerProfilesDropdown()

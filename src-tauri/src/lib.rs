@@ -1,5 +1,6 @@
 use tauri::Manager;
 
+mod appearance;
 mod network;
 mod power_profiles;
 
@@ -19,7 +20,8 @@ pub fn run() {
             network::connect_wifi,
             network::list_wifi,
             network::toggle_wifi,
-            network::get_wifi
+            network::get_wifi,
+            appearance::toggle_system_theme
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
