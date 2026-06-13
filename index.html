@@ -71,7 +71,25 @@
   <template id="appearance-view">
     <h1>Appearance</h1>
     <div class="vertical-layout hierarchy">
-      <button id="toggletheme">TOGGLE THEME</button>
+      <h3>System Theme</h3>
+      <div class="horizontal-radio">
+        <div class="option">
+          <input type="radio" id="set-dark-opt" name="theme" checked>
+          <label for="set-dark-opt">
+            <img src="/src/assets/darkmodepreview.png" alt="">
+            Dark</label>
+        </div>
+
+        <div class="option">
+          <input type="radio" id="set-light-opt" name="theme">
+          <label for="set-light-opt">
+            <img src="/src/assets/lightmodepreview.png" alt="">Light</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="vertical-layout hierarchy">
+      <button id="accent colour">do we even want to implement this?</button>
     </div>
   </template>
   <template id="battery-view">

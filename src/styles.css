@@ -23,6 +23,7 @@
   --deep-border-radius: 2rem;
   --shallow-border-radius: 1rem;
   --title-bar-height: 1rem;
+  --grey-colour: rgb(206, 206, 206);
 
 }
 
@@ -296,6 +297,43 @@ h3,
 h4 {
   padding: 0 1rem;
   margin-bottom: 0;
+}
+
+
+.horizontal-radio {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.option {
+  flex: 1;
+  display: block;
+}
+
+.option input {
+  display: none;
+
+}
+
+.option label {
+  display: block;
+  padding: 8px 14px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--shallow-border-radius);
+}
+
+
+.option input:checked+label {
+  background: var(--accent-colour);
+  color: var(--text-hover-colour)
+}
+
+.option img {
+  max-width: 99%;
+  border-radius: var(--shallow-border-radius);
 }
 
 /*dark theme*/
