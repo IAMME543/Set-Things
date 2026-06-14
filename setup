@@ -1,0 +1,9 @@
+#!/bin/sh
+# postinst
+
+
+echo "Downloading toggle-theme"
+curl -L https://raw.githubusercontent.com/IAMME543/dotfiles/refs/heads/main/bin/toggle-theme -o ~/.local/bin/toggle-theme
+echo "Downloaded toggle-theme"
+
+chmod +x ~/.local/bin/toggle-theme
